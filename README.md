@@ -1,6 +1,8 @@
 # setup
 Tools for setting up remote jupyter servers in AWS ubuntu instances
 
+Overly simplified version of [fastsetup](paste link here)
+
 ## Steps
 
 1. Installing mamba and other basic stuff: 
