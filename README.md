@@ -15,3 +15,5 @@ Overly simplified version of [fastsetup](paste link here)
   - `sudo apt install -y nvidia-driver-460-server`
   - `sudo modprobe nvidia`
   - `nvidia-smi`
+
+-- if connection error when creating jupyter server, reboot instance and try again
