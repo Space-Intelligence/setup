@@ -5,4 +5,4 @@ Tools for setting up remote servers
 
 1. Installing mamba and other basic stuff: 
   - `wget https://raw.githubusercontent.com/Space-Intelligence/setup/main/setup.sh`
-  - `bash setup.sh`
+  - `. ./setup.sh`
