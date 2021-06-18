@@ -13,4 +13,6 @@ Overly simplified version of [fastsetup](paste link here)
   - `sudo reboot`
   - `ssh -L localhost:8888:localhost:8888 ubuntu@<ip_adress>` --> to be able to connect to jupter server from browser
   - `ubuntu-drivers devices` --> select appropriate driver from the list for next step:
-  - `sudo apt-fast install -y nvidia-driver-460-server`
+  - `sudo apt install -y nvidia-driver-460-server`
+  - `sudo modprobe nvidia`
+  - `nvidia-smi`
