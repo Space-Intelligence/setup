@@ -1,7 +1,7 @@
 # setup
 Tools for setting up remote jupyter servers in AWS ubuntu instances
 
-Overly simplified version of [fastsetup](paste link here)
+Overly simplified version of [fastsetup](https://github.com/fastai/fastsetup)
 
 ## Steps
 0. `ssh -L localhost:8888:localhost:8888 ubuntu@<ip_adress>` --> to be able to connect to jupter server from browser
