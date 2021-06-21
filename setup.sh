@@ -5,7 +5,7 @@
 sudo apt-get update
 
 # install AWS cli to copy stuff from buckets
-sudo apt install awscli
+sudo apt install awscli -y
 
 # install ubuntu-drivers to find out which nvidia drivers we need
 sudo apt install ubuntu-drivers-common -y  
