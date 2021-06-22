@@ -2,22 +2,20 @@
 ## some bits are adapted from https://github.com/fastai/fastsetup
 
 #setting default args
-gpu=true
-jupyter=true
-mamba=true
+gpu=true #true if gpu server, false if not
+cli=false
+
 #get arguments from the flags
-while getopts "g:j:m:h" flag
+while getopts "g:c:h" flag
 do
   case "$flag" in
     g) gpu=${OPTARG} ;;
-    j) jupyter=${OPTARG};;
-    m) mamba=${OPTARG};;
+    c) cli=${OPTARG};;
     h) 
-      echo "Syntax: bash ./setup.sh [-g|-j|-m]"
+      echo "Syntax: bash ./setup.sh [-g|-c|-m]"
       echo "options:"
-      echo "g    boolean flag for gpu, defaults to true"
-      echo "j    boolean flag for jupyterlab, defaults to true"
-      echo "m    boolean flag for mamba, defaults to true"
+      echo "g    boolean flag for gpu server. Controls the installation of nvidia drivers and jupyter"
+      echo "c    boolean flag for aws cli. Defaults to false"
       ;;
     *) echo "invalid option: -$flag, call -h for help" ;;
   esac
@@ -26,11 +24,8 @@ done
 sudo apt-get update
 
 # install AWS cli to copy stuff from buckets
-sudo apt install awscli -y
-
-# install ubuntu-drivers to find out which nvidia drivers we need
-if $gpu; then
-  sudo apt install ubuntu-drivers-common -y  
+if $cli; then
+  sudo apt install awscli -y
 fi
 
 #  install conda
@@ -41,19 +36,12 @@ bash Miniconda3-latest*.sh -b
 source ~/.bashrc ## adding to bash path so you can actually do conda install stuff
 rm Miniconda3-latest*.sh
 
-# install mamba
-if $mamba; then
-  conda install mamba -n base -c conda-forge -y
-fi
 
-# install jupyter-lab
-if $jupyter; then
-  if $mamba; 
-    then
-      mamba install -c conda-forge jupyterlab -y
-    else
-      conda install -c conda-forge jupyterlab -y
-  fi
+if $gpu; then
+  # install jupyter-lab
+  conda install -c conda-forge jupyterlab -y
+  # install ubuntu-drivers so we can find the proper drivers later
+  sudo apt install ubuntu-drivers-common -y 
 fi
     
 
