@@ -1,10 +1,11 @@
 ## Setting up AWS ubuntu machines
 ## some bits are adapted from https://github.com/fastai/fastsetup
 
-#setting some default args
+#setting default args
 gpu=true
 jupyter=true
 mamba=true
+#get arguments from the flags
 while getopts "g:j:m:h" flag
 do
   case "$flag" in
