@@ -8,7 +8,7 @@ Overly simplified version of [fastsetup](https://github.com/fastai/fastsetup)
 
 1. Installing mamba and other basic stuff: 
   - `wget https://raw.githubusercontent.com/Space-Intelligence/setup/main/setup.sh`
-  - `. ./setup.sh`
+  - `. ./setup.sh`. If not using gpu or jupyterlab, set -g, -j, -m to false
 
 2. Reboot and install nvidia drivers (if using GPU instance)
   - `ubuntu-drivers devices` --> select appropriate driver from the list for next step:
