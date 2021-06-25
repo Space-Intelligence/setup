@@ -10,7 +10,7 @@ Overly simplified version of [fastsetup](https://github.com/fastai/fastsetup)
   - `wget https://raw.githubusercontent.com/Space-Intelligence/setup/main/setup.sh`
   - `. ./setup.sh`. 
     > If not using a gpu server set `-g false`.
-    > If not using aws cli, set `-c false`.
+    > If using cpu optimized machine set `-c true`
 
 2. Reboot and install nvidia drivers (if using GPU instance)
   - `ubuntu-drivers devices` --> select appropriate driver from the list for next step:
