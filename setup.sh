@@ -7,20 +7,36 @@ gpu=true #true if gpu server, false if not
 cpu_optim=false
 
 #get arguments from the flags
-while getopts "g:c:h" flag
-do
-  case "$flag" in
-    g) gpu=${OPTARG} ;;
-    c) cpu_optim=${OPTARG} ;;
-    h) 
-      echo "Syntax: bash ./setup.sh [-g|-c|-m]"
-      echo "options:"
-      echo "g    boolean flag for gpu server. Controls the installation of nvidia drivers and jupyter"
-      echo "c    boolean flag for cpu optimized machines. Defaults to false"
-      ;;
-    *) echo "invalid option: -$flag, call -h for help" ;;
-  esac
-done 
+# while getopts "g:c:h" flag
+# do
+#   case "$flag" in
+#     g) gpu=${OPTARG} ;;
+#     c) cpu_optim=${OPTARG} ;;
+#     h) 
+#       echo "Syntax: bash ./setup.sh [-g|-c|-m]"
+#       echo "options:"
+#       echo "g    boolean flag for gpu server. Controls the installation of nvidia drivers and jupyter"
+#       echo "c    boolean flag for cpu optimized machines. Defaults to false"
+#       ;;
+#     *) echo "invalid option: -$flag, call -h for help" ;;
+#   esac
+# done 
+while [ $# -gt 0 ]; do
+    case "$1" in 
+        -g*|--gpu*)
+            gpu="$2";;
+        -c*|--cpu_optim*)
+            cpu_optim="$2";;
+        -h|--help)
+            echo "syntax: ./instance-creation.sh [-g|--gpu|-c|--cpu_optim]"
+            echo "Arguments: "
+            echo "-g, --gpu          bool for gpu, defaults to true"
+            echo "-c, --cpu_optim    bool for cpu optimized machines, with different ARM arch."
+            exit 0 ;;
+    esac
+    shift
+done
+
 # basic housekeeping
 sudo apt-get update
 
