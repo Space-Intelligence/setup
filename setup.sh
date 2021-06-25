@@ -6,21 +6,6 @@ gpu=true #true if gpu server, false if not
 #cli=false
 cpu_optim=false
 
-#get arguments from the flags
-# while getopts "g:c:h" flag
-# do
-#   case "$flag" in
-#     g) gpu=${OPTARG} ;;
-#     c) cpu_optim=${OPTARG} ;;
-#     h) 
-#       echo "Syntax: bash ./setup.sh [-g|-c|-m]"
-#       echo "options:"
-#       echo "g    boolean flag for gpu server. Controls the installation of nvidia drivers and jupyter"
-#       echo "c    boolean flag for cpu optimized machines. Defaults to false"
-#       ;;
-#     *) echo "invalid option: -$flag, call -h for help" ;;
-#   esac
-# done 
 while [ $# -gt 0 ]; do
     case "$1" in 
         -g*|--gpu*)
