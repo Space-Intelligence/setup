@@ -3,19 +3,20 @@
 
 #setting default args
 gpu=true #true if gpu server, false if not
-cli=false
+#cli=false
+cpu_optim=false
 
 #get arguments from the flags
 while getopts "g:c:h" flag
 do
   case "$flag" in
     g) gpu=${OPTARG} ;;
-    c) cli=${OPTARG};;
+    c) cpu_optim=${OPTARG} ;;
     h) 
       echo "Syntax: bash ./setup.sh [-g|-c|-m]"
       echo "options:"
       echo "g    boolean flag for gpu server. Controls the installation of nvidia drivers and jupyter"
-      echo "c    boolean flag for aws cli. Defaults to false"
+      echo "c    boolean flag for cpu optimized machines. Defaults to false"
       ;;
     *) echo "invalid option: -$flag, call -h for help" ;;
   esac
@@ -24,12 +25,16 @@ done
 sudo apt-get update
 
 # install AWS cli to copy stuff from buckets
-if $cli; then
-  sudo apt install awscli -y
-fi
+# if $cli; then
+#   sudo apt install awscli -y
+# fi
 
 #  install conda
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+if $cpu_optim; then
+  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
+else
+  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+fi
 bash Miniconda3-latest*.sh -b
 ~/miniconda3/bin/conda init bash
 
