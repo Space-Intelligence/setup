@@ -1,3 +1,5 @@
+#! /bin/bash
+
 ## Setting up AWS ubuntu machines
 ## some bits are adapted from https://github.com/fastai/fastsetup
 
