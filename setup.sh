@@ -8,6 +8,7 @@ gpu=true #true if gpu server, false if not
 #cli=false
 cpu_optim=false
 
+# named arguments
 while [ $# -gt 0 ]; do
     case "$1" in 
         -g*|--gpu*)
