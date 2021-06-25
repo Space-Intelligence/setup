@@ -16,7 +16,7 @@ while [ $# -gt 0 ]; do
         -c*|--cpu_optim*)
             cpu_optim="$2";;
         -h|--help)
-            echo "syntax: ./instance-creation.sh [-g|--gpu|-c|--cpu_optim]"
+            echo "syntax:. ./setup.sh [-g|--gpu|-c|--cpu_optim]"
             echo "Arguments: "
             echo "-g, --gpu          bool for gpu, defaults to true"
             echo "-c, --cpu_optim    bool for cpu optimized machines, with different ARM arch."
